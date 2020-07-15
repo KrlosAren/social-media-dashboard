@@ -1,0 +1,96 @@
+/* COLORS  */
+$dark-primary: hsl(230, 17%, 14%);
+$dark-secondary: hsl(232, 19%, 15%);
+$dark-desaturated: hsl(228, 28%, 20%);
+$dark-light: hsl(228, 34%, 66%);
+$dark-text: hsl(0, 0%, 100%);
+
+$color-facebook: hsl(208, 92%, 53%);
+$color-twitter: hsl(203, 89%, 53%);
+$color-instagram: hsl(37, 97%, 70%) 0%, hsl(329, 70%, 58%) 100%;
+$color-youtube: hsl(348, 97%, 39%);
+
+$lime-green: hsl(163, 72%, 41%);
+$bright-red: hsl(356, 69%, 56%);
+
+
+$white-background: hsl(0, 0%, 100%);
+$very-pale: hsl(225, 100%, 98%);
+$light-grayish: hsl(227, 47%, 96%);
+$dark-grayish : hsl(228, 12%, 44%);
+$very-dark: hsl(230, 17%, 14%);
+
+/* WIDTH */ 
+
+$screen-width : 80%;
+
+/* TYPOGRAFY  */
+
+$font-1 : 'Inter', sans-serif;
+
+
+/* FUNCTIONS */
+
+@function calculateRem($size){
+	$remSize: $size / 16px;
+	@return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+	font-size: $size;
+	font-size: calculateRem($size);
+	line-height: calculateRem($size)*1.5;
+}
+
+@mixin text-color($danger : true) {
+  @if $danger {
+    color: $bright-red;
+  } @else {
+    color: $lime-green;
+  }
+}
+
+@mixin border-color($border-color: true) {
+  @if border-color {
+    content: "";
+    position: absolute;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 7px;
+    border-top: 7px solid $border-color;
+  } @else{
+    border-color: none;
+  }
+}
+
+
+@each $header, $size in (h1: 30px, h2: 25px, h3: 20px, h4: 15px, h5: 10px) {
+  #{$header} {
+		font-size: $size;
+		margin: 0;
+  }
+}
+
+/* GENERALES */
+
+body{
+  margin: 0;
+  background-color: $dark-primary;
+}
+
+main {
+  max-width: 1440px;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  box-sizing: border-box;
+  display: grid;
+  // background-color: $dark-primary;
+  @include font-size(14px);
+}
+

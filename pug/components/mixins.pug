@@ -1,0 +1,24 @@
+mixin box(rrss, name, followers, follow, icon, now, variacion)
+  .box&attributes(attributes)= variacion
+    span.box__rrss
+      img(src="http://192.168.0.4:4000/images/"+rrss)
+      h2=name
+    span.box__content
+      h3=followers
+      h4=follow
+    span.box__stats
+      img(src="http://192.168.0.4:4000/images/"+icon)
+      h5=now
+
+
+mixin overview(page, icon, number, stat, arrow)
+  .overview
+    span.overview__info
+      h3=page
+      img(src="http://192.168.0.4:4000/images/"+icon)
+    span.overview__stat
+      h2=number
+      span.overview__likes
+        img(src="http://192.168.0.4:4000/images/"+arrow)
+        h5=stat
+

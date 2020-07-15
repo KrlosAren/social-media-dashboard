@@ -1,0 +1,77 @@
+@include media(desktop-m) {
+
+  @include media(desktop-l) {
+    .header {
+      padding: 60px 0;
+      @include display-grid;
+      @include grid-template-columns(grid-repeat(2));
+    }
+  }
+
+  .header {
+    padding: 60px 0;
+    @include display-grid;
+    @include grid-template-columns(grid-repeat(2));
+
+    &__title{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  .box__social {
+    max-width: 1440px;
+    width: 100%;
+    gap: 30px;
+    justify-content: space-between;
+    @include display-grid;
+    @include grid-template-columns(grid-repeat(4, max(320px)));
+  }
+
+  .overview__section {
+    max-width: 1440px;
+    width: 100%;
+    justify-content: space-between;
+    gap: 15px;
+    @include display-grid;
+    @include grid-template-columns(grid-repeat(4, max(320px)));
+    @include grid-template-rows(220px);
+  }
+
+  .overview {
+    width: 100%;
+    height: 200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 40px;
+    border-radius: 0.5em;
+    background-color: $dark-secondary;
+  }
+
+  .box.facebook:hover {
+    cursor: pointer;
+    background-color: $dark-desaturated;
+  }
+  .box.twitter:hover {
+    cursor: pointer;
+    background-color: $dark-desaturated;
+  }
+  .box.instagram:hover {
+    cursor: pointer;
+    background-color: $dark-desaturated;
+  }
+  .box.youtube:hover {
+    cursor: pointer;
+    background-color: $dark-desaturated;
+  }
+
+  .overview:hover {
+    cursor: pointer;
+    background-color: $dark-desaturated;
+  }
+
+}
