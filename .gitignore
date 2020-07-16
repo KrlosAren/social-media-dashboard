@@ -1,9 +1,5 @@
 .DS_Store
 node_modules
-Design_files
-design
 style-guide.md
 README.md
 package-lock.json
-public
-index.html

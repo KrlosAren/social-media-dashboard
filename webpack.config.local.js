@@ -8,8 +8,8 @@ module.exports = {
     app : path.resolve(__dirname, './src/app.js'),
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'src/[name].[hash].js',
+    path: path.resolve(__dirname, './public'),
+    filename: './src/js/[name].js',
   },
   module: {
     rules: [
@@ -47,7 +47,7 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: [
-          MiniCssExtractPlugin.loader,
+          'style-loader',
           'css-loader',
           {
             loader: 'sass-loader',
@@ -69,12 +69,13 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: './src/styles/[name].[hash].css',
+      filename: './src/styles/css/[name].css',
     }),
     new HtmlWebpackPlugin({
       alwaysWriteToDisk: true,
-      title: './[name].html',
+      title: '[name].html',
       template: path.resolve(__dirname, './src/pug/index.pug'),
+      filename: 'index.html'
     }),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ['**/app.*', '**/commons.*'],
