@@ -1,8 +1,6 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const webpack = require('webpack')
-const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
@@ -12,11 +10,13 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'src/[name].[hash].js',
-    publicPath: 'dist/',
-    chunkFilename: 'src/js/[id].[chunkhash].js',
   },
   module: {
     rules: [
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
+      },
       {
         test: /\.pug$/,
         use : [
@@ -53,17 +53,14 @@ module.exports = {
         loader: 'file-loader',
         options: {
           outputPath: './src/assets/',
-          name: '[name].[ext]',
+          name: '[name].[hash].[ext]',
         },
       },
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: './src/styles/[name].css',
-    }),
-    new HtmlWebpackHarddiskPlugin({
-      outputPath: path.resolve(__dirname, 'dist'),
+      filename: './src/styles/[name].[hash].css',
     }),
     new HtmlWebpackPlugin({
       alwaysWriteToDisk: true,

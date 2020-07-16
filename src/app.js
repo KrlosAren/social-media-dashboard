@@ -1,12 +1,12 @@
 import './styles/sass/main.scss'
 import '../pug/index.pug'
 
-import facebook from '../public/images/icon-facebook.svg'
-import twitter from '../public/images/icon-twitter.svg'
-import instagram from '../public/images/icon-instagram.svg'
-import youtube from '../public/images/icon-youtube.svg'
-import up from '../public/images/icon-up.svg'
-import down from '../public/images/icon-down.svg'
+import facebook from  '../src/assets/icon-facebook.svg'
+import twitter from   '../src/assets/icon-twitter.svg'
+import instagram from '../src/assets/icon-instagram.svg'
+import youtube from   '../src/assets/icon-youtube.svg'
+import up from        '../src/assets/icon-up.svg'
+import down from      '../src/assets/icon-down.svg'
 
 const switchButton = document.getElementById('dark-mode')
 const main = document.querySelector('body')

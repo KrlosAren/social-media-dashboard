@@ -1,13 +1,13 @@
 mixin box(rrss, name, followers, follow, icon, now, variacion)
   .box&attributes(attributes)= variacion
     span.box__rrss
-      img(src="http://192.168.0.4:4000/images/"+rrss)
+      img(src="../src/assets/"+rrss)
       h2=name
     span.box__content
       h3=followers
       h4=follow
     span.box__stats
-      img(src="http://192.168.0.4:4000/images/"+icon)
+      img(src="../src/assets/"+icon)
       h5=now
 
 
@@ -15,10 +15,10 @@ mixin overview(page, icon, number, stat, arrow)
   .overview
     span.overview__info
       h3=page
-      img(src="http://192.168.0.4:4000/images/"+icon)
+      img(src="../src/assets/"+icon)
     span.overview__stat
       h2=number
       span.overview__likes
-        img(src="http://192.168.0.4:4000/images/"+arrow)
+        img(src="../src/assets/"+arrow)
         h5=stat
 
