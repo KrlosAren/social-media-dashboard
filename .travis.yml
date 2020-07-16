@@ -15,6 +15,7 @@ script:
         - krlosaren@gmail.com
       on_success: always
       on_failure: always
+      slack: tropic-lab:55dVeN7C5gxptpxz7gNkY6bE
 deploy:
   provider: pages
   edge: true
