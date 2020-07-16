@@ -6,7 +6,8 @@ cache:
 node_js:
   - "14"
 git:
-  depth: 3
+  depth: 25
+  quiet: true
 script:
   - yarn build:production
   notifications:
