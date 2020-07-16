@@ -3,14 +3,13 @@
 
 .light-theme {
 
-  p {
-    color: $dark-primary;
-  }
-
   main {
     background-color: $light-background;
   }
 
+  p {
+    color: $dark-primary;
+  }
 
   .header {
     &__title {
@@ -83,14 +82,14 @@
 
   .dark-theme {
 
+    main {
+      background: $dark-primary;
+    }
+
     p {
       color: $dark-light;
     }
-  
-
-    main {
-      background-color: $dark-primary;
-    }
+ 
     .header {
       &__title {
         h1 {

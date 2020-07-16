@@ -20,8 +20,10 @@ switchButton.addEventListener('change', () => {
   main.classList.toggle('dark-theme')
     if (buttonMode.children[0].textContent === 'Dark Mode') {
       buttonMode.children[0].textContent = 'Light Mode'
+      main.style.background = 'hsl(230, 17%, 14%)'
     }else {
       buttonMode.children[0].textContent = 'Dark Mode'
+      main.style.background = 'hsl(0, 0%, 100%)'
     }
 })
 

@@ -26,6 +26,9 @@ $light-text: hsl(230, 17%, 14%);
 $font-1 : 'Inter', sans-serif;
 
 /*--------GENERALES--------------*/
+body {
+  background-color: $light-background;
+}
 
 p {
   margin: 0;

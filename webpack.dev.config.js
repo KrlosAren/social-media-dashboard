@@ -1,8 +1,6 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const webpack = require('webpack')
-const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
@@ -10,18 +8,29 @@ module.exports = {
     app : path.resolve(__dirname, './src/app.js'),
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'src/[name].[hash].js',
-    publicPath: 'dist/',
+    path: path.resolve(__dirname, './public'),
+    filename: './src/js/[name].js',
   },
   devServer: {
     port: 3500,
+    hot: true,
     open: true,
-    contentBase: path.resolve(__dirname, 'dist'),
-    host: '192.168.0.4',
   },
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        use:'babel-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.html$/i,
+        use: [
+          'file-loader?name=[name].[ext]',
+          'extract-loader',
+          'html-loader'
+          ],
+      },
       {
         test: /\.pug$/,
         use : [
@@ -65,15 +74,23 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: './src/styles/[name].css',
-    }),
-    new HtmlWebpackHarddiskPlugin({
-      outputPath: path.resolve(__dirname, 'dist'),
+      filename: './src/styles/css/[name].css',
     }),
     new HtmlWebpackPlugin({
       alwaysWriteToDisk: true,
-      title: './[name].html',
-      template: path.resolve(__dirname, './pug/index.pug'),
+      title: '[name].html',
+      template: path.resolve(__dirname, './src/pug/index.pug'),
+      filename: 'index.html'
     }),
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: ['**/app.*', '**/commons.*'],
+    })
   ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      minSize: 0,
+      name: 'commons',
+    }
+  }
 }
