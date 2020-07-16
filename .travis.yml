@@ -9,6 +9,12 @@ git:
   depth: 3
 script:
   - yarn build:production
+  notifications:
+    email:
+      recipients:
+        - krlosaren@gmail.com
+      on_success: always
+      on_failure: always
 deploy:
   provider: pages
   edge: true
