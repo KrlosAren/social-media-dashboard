@@ -3,27 +3,30 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
-
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
   entry: {
-    home : path.resolve(__dirname, './src/app.js'),
+    app : path.resolve(__dirname, './src/app.js'),
   },
   output: {
-    path : path.resolve(__dirname, 'dist'),
-  },
-  devServer: {
-    port: 3500,
-    hot: true,
-    open: true,
-    contentBase: path.resolve(__dirname, 'dist'),
-    publicPath: 'dist'
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'src/[name].[hash].js',
+    publicPath: 'dist/',
+    chunkFilename: 'src/js/[id].[chunkhash].js',
   },
   module: {
     rules: [
       {
         test: /\.pug$/,
-        use : 'pug-loader',
+        use : [
+          {
+            loader: 'pug-loader',
+            options: {
+              pretty: true,
+            }
+          }
+        ]
       },
       {
         test: /\.css$/,
@@ -33,28 +36,49 @@ module.exports = {
         ]
       },
       {
-        test: /\.scss$/,
+        test: /\.s[ac]ss$/i,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
-          'sass-loader',
-        ]
-      }
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: require('sass'),
+            },
+          },
+        ],
+      },
+      {
+        test: /\.jpg|png|gif|woff|eot|ttf|svg|mp4|webm$/,
+        loader: 'file-loader',
+        options: {
+          outputPath: './src/assets/',
+          name: '[name].[ext]',
+        },
+      },
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: './css/[name].[hash].css',
-      chunkFilename: 'css/[id].[hash].css',
+      filename: './src/styles/[name].css',
     }),
     new HtmlWebpackHarddiskPlugin({
       outputPath: path.resolve(__dirname, 'dist'),
     }),
     new HtmlWebpackPlugin({
       alwaysWriteToDisk: true,
-      title: '[name].html',
+      title: './[name].html',
       template: path.resolve(__dirname, './pug/index.pug'),
     }),
-    new webpack.HotModuleReplacementPlugin(),
-  ]
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: ['**/app.*', '**/commons.*'],
+    })
+  ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      minSize: 0,
+      name: 'commons',
+    }
+  }
 }

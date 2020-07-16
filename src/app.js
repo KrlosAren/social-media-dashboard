@@ -9,9 +9,24 @@ import up from '../public/images/icon-up.svg'
 import down from '../public/images/icon-down.svg'
 
 const switchButton = document.getElementById('dark-mode')
+const main = document.querySelector('body')
+const changeTheme = document.querySelector('main')
+const buttonMode = document.querySelector('.header__night')
 
 switchButton.addEventListener('change', () => {
-  console.log('hola')
-  
-
+  main.classList.toggle('dark-theme')
+    if (buttonMode.children[0].textContent === 'Dark Mode') {
+      buttonMode.children[0].textContent = 'Light Mode'
+    }else {
+      buttonMode.children[0].textContent = 'Dark Mode'
+    }
 })
+
+window.addEventListener('load', () => {
+  if ((main.style.background = "$light-background")) {
+    changeTheme.classList.add('light-theme')
+    buttonMode.children[0].textContent = 'Dark Mode'
+  }
+})
+
+

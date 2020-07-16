@@ -1,0 +1,78 @@
+/* FUNCTIONS */
+
+@mixin text-light-dark-color($light-color: true) {
+  @if $light-color {
+    color: $light-text;
+  } @else {
+    color: $dark-text;
+  }
+}
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+  line-height: calculateRem($size) * 1.5;
+}
+
+@mixin text-color($danger: true) {
+  @if $danger {
+    color: $bright-red;
+  } @else {
+    color: $lime-green;
+  }
+}
+
+@mixin border-color($border-color: true) {
+  @if border-color {
+    content: "";
+    position: absolute;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 7px;
+    border-top: 7px solid $border-color;
+  } @else {
+    border-color: none;
+  }
+}
+
+@each $header, $size in (h1: 30px, h2: 25px, h3: 20px, h4: 15px, h5: 10px) {
+  #{$header} {
+    font-size: $size;
+    margin: 0;
+  }
+}
+
+@mixin  background-color($background : true) {
+  @if $background {
+    background-color: $light-background;
+  } @else {
+    background-color: $dark-primary;
+  }
+}
+
+
+/* --------------------GENERALES-------------------- */
+
+body {
+  margin: 0;
+  // background-color: $dark-primary;
+}
+
+main {
+  max-width: 1440px;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  box-sizing: border-box;
+  display: grid;
+}

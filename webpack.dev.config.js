@@ -13,17 +13,12 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'src/[name].[hash].js',
     publicPath: 'dist/',
-    // chunkFilename: 'src/js/[id].[chunkhash].js',
-    // library: '[name]',
   },
   devServer: {
     port: 3500,
-    // hot: true,
     open: true,
     contentBase: path.resolve(__dirname, 'dist'),
-    // writeToDisk: true,
     host: '192.168.0.4',
-    // watchContentBase: true,
   },
   module: {
     rules: [
@@ -80,16 +75,5 @@ module.exports = {
       title: './[name].html',
       template: path.resolve(__dirname, './pug/index.pug'),
     }),
-    // new webpack.HotModuleReplacementPlugin(),
-    // new CleanWebpackPlugin({
-    //   cleanOnceBeforeBuildPatterns: ['**/app.*', '**/commons.*'],
-    // })
   ],
-  // optimization: {
-  //   splitChunks: {
-  //     chunks: 'all',
-  //     minSize: 0,
-  //     name: 'commons',
-  //   }
-  // }
 }

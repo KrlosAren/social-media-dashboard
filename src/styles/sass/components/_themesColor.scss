@@ -1,0 +1,160 @@
+
+/*------------------ THEMES COLORS -------------------------*/
+
+.light-theme {
+
+  p {
+    color: $dark-primary;
+  }
+
+  main {
+    background-color: $light-background;
+  }
+
+
+  .header {
+    &__title {
+      h1{
+        @include text-light-dark-color(true)
+      }
+
+      h4{
+        color: $light-grayish;
+      }
+    }
+  }
+
+    .box {
+      background-color: $light-grayish-blue;
+
+      h2 {
+        color: $light-grayish;
+      }
+      h3 {
+        @include text-light-dark-color(true);
+      }
+
+      h4 {
+        color: $light-grayish;
+      }
+    }
+
+    .box__social > div:hover {
+      background-color: $light-pale;
+    }
+
+    .second h2 {
+      color: $light-grayish;
+    }
+
+    .overview {
+      background-color: $light-grayish-blue;
+
+      h3 {
+        color: $light-grayish;
+      }
+
+      &__stat {
+        h2 {
+          @include text-light-dark-color(true);
+        }
+      }
+    }
+
+    .overview__section > div:hover {
+      background-color: $light-pale;
+    }
+
+    .attribution {
+      h4 {
+        color: $light-grayish;
+      }
+    }
+
+    @include media(mobile-only) {
+      .header {
+        &__title {
+          border-bottom: 2px solid $light-grayish;
+        }
+      }
+    }
+}
+
+
+  .dark-theme {
+
+    p {
+      color: $dark-light;
+    }
+  
+
+    main {
+      background-color: $dark-primary;
+    }
+    .header {
+      &__title {
+        h1 {
+          @include text-light-dark-color(false);
+        }
+
+        h4 {
+          color: $dark-light;
+        }
+      }
+    }
+
+    .box {
+      background-color: $dark-desaturated;
+
+      h2 {
+        color: $dark-light;
+      }
+      h3 {
+        @include text-light-dark-color(false);
+      }
+
+      h4 {
+        color: $dark-light;
+      }
+    }
+
+    .box__social > div:hover {
+      background-color: $dark-secondary;
+    }
+
+    .second h2 {
+      color: $dark-text;
+    }
+
+    .overview {
+      background-color: $dark-desaturated;
+
+      h3 {
+        color: $dark-light;
+      }
+
+      &__stat {
+        h2 {
+          @include text-light-dark-color(false);
+        }
+      }
+    }
+
+    .overview__section > div:hover {
+      background-color: $dark-secondary;
+    }
+
+    .attribution {
+      h4 {
+        color: $dark-light;
+      }
+    }
+
+    @include media(mobile-only) {
+      .header {
+        &__title {
+          border-bottom: 2px solid $dark-light;
+        }
+      }
+    }
+  }

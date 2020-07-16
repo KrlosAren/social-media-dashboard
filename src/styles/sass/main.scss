@@ -1,6 +1,7 @@
 @import './components/bootstrap_reboot';
 @import './components/breakpoints';
-@import './components/globals';
 @import './components/grids';
-@import './components/mobileDark';
-@import './components/desktopDark';
+@import './components/mixin_function';
+@import './components/globals';
+@import './components/themesColor';
+@import './components/base_styles';
