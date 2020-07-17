@@ -17,10 +17,20 @@ language: node_js
 node_js: 
   - "14"
 notifications: 
-  email: 
-    recipients: 
-      on_failure: always
-      on_success: always
-      slack: "tropic-lab:55dVeN7C5gxptpxz7gNkY6bE"
+  recipients: 
+    on_failure: always
+    on_success: always
+    slack: "tropic-lab:55dVeN7C5gxptpxz7gNkY6bE"
 script: 
   - "yarn build:production"
+deploy:
+  provider: pages
+  skip_cleanup: true
+  keep-history: true
+  github_token: $GITHUB_TOKEN
+  local-dir: dist/
+  target-branch: gh-pages
+  commit_message: 'Deploy Success'
+  on:
+    branch: master
+
