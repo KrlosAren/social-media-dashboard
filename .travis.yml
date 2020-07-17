@@ -1,29 +1,26 @@
 language: node_js
-cache:
-  directories:
+cache: 
+  directories: 
     - node_modules
     - ~/.npm
-node_js:
-  - "14"
-git:
-  depth: 10
-script:
-  - yarn build:production
-  notifications:
-    email:
-      recipients:
-        - krlosaren@gmail.com
-      on_success: always
-      on_failure: always
-      slack: tropic-lab:55dVeN7C5gxptpxz7gNkY6bE
-deploy:
-  provider: pages
-  edge: true
-  skip_cleanup: true
-  keep-history: true
-  github_token: $GITHUB_TOKEN
-  local-dir: dist/
-  target-branch: gh-pages
+deploy: 
   commit_message: "Deploy Release"
-  on:
-branch: master
+  edge: true
+  github_token: $GITHUB_TOKEN
+  keep-history: true
+  local-dir: dist/
+  provider: pages
+  skip_cleanup: true
+  target-branch: gh-pages
+  true: ~
+language: node_js
+node_js: 
+  - "14"
+notifications: 
+  email: 
+    recipients: 
+      on_failure: always
+      on_success: always
+      slack: "tropic-lab:55dVeN7C5gxptpxz7gNkY6bE"
+script: 
+  - "yarn build:production"
