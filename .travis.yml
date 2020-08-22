@@ -22,7 +22,7 @@ notifications:
     on_success: always
     slack: "tropic-lab:55dVeN7C5gxptpxz7gNkY6bE"
 script: 
-  - "yarn build:production"
+  - "npm run build:dev"
 deploy:
   provider: pages
   skip_cleanup: true
